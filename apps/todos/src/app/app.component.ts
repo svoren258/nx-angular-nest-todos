@@ -1,40 +1,45 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Todo } from '@todos/data';
+import { Store } from '@ngrx/store';
+import { AppState } from '@todos/data';
+import { addTodo, getTodos, selectTodos, toggleTodo } from '@todos/store';
 
 @Component({
   selector: 'todos-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   todoInputForm = this.fb.group({
     todoTitle: ''
   });
 
-  todos: Todo[] = [];
+  readonly todos$ = this.store.select(selectTodos);
 
   constructor(private readonly http: HttpClient,
-              private readonly fb: FormBuilder) {
+              private readonly fb: FormBuilder,
+              private readonly store: Store<AppState>) {
     this.fetch();
   }
 
   fetch(): void {
-    this.http.get<Todo[]>('/api/todos').subscribe((t) => (this.todos = t));
+    this.store.dispatch(getTodos());
   }
 
   addTodo(): void {
     const title = this.todoInputForm.controls.todoTitle.value;
-    this.http.post('/api/addTodo', { title, checked: false }).subscribe(() => {
-      this.fetch();
-    });
-    this.todoInputForm.reset();
+    if (title) {
+      this.store.dispatch(addTodo({ todo: {
+        title, checked: false
+        }
+      }));
+      this.todoInputForm.reset();
+    }
   }
 
   toggleTodo(id: string): void {
-    this.http.put('/api/toggleTodo', { id }).subscribe(() =>
-      this.fetch()
-    );
+    this.store.dispatch(toggleTodo({ id }));
   }
 }

@@ -4,7 +4,7 @@
     <h1 nz-typography class='title'>Todos</h1>
   </nz-header>
   <nz-content class='content'>
-    <todos-todos (checkTodo)='toggleTodo($event)' [todos]="todos"></todos-todos>
+    <todos-todos *ngIf="(todos$ | async) as todos" (checkTodo)='toggleTodo($event)' [todos]="todos"></todos-todos>
   </nz-content>
   <nz-footer>
     <form nz-form [formGroup]="todoInputForm" class="todo-input-form" (ngSubmit)="addTodo()">

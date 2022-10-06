@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { GlobalStoreModule } from '@todos/store';
 import { UiModule } from '@todos/ui';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -18,7 +20,7 @@ const icons: IconDefinition[] = [ UnorderedListOutline ];
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, UiModule, NzButtonModule, NzLayoutModule, NzIconModule.forRoot(icons), NzTypographyModule, NzFormModule, ReactiveFormsModule, NzInputModule],
+  imports: [BrowserModule, CommonModule, GlobalStoreModule, HttpClientModule, UiModule, NzButtonModule, NzLayoutModule, NzIconModule.forRoot(icons), NzTypographyModule, NzFormModule, ReactiveFormsModule, NzInputModule],
   providers: [],
   bootstrap: [AppComponent],
 })

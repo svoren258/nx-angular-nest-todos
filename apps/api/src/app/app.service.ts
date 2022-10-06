@@ -12,19 +12,22 @@ export class AppService {
     return this.todos;
   }
 
-  addTodo(todo: TodoDTO): void {
+  addTodo(todo: TodoDTO): Todo {
     const { title, checked } = todo;
-    this.todos.push({
+    const newTodo = {
       id: Math.random().toString(),
       title,
       checked
-    });
+    }
+    this.todos.push(newTodo);
+    return newTodo;
   }
 
-  toggleTodo(id: string): void {
+  toggleTodo(id: string): Todo {
     this.todos = this.todos.map(todo => todo.id == id ? {
       ...todo,
       checked: !todo.checked
     } : todo);
+    return this.todos.find(todo => todo.id === id);
   }
 }

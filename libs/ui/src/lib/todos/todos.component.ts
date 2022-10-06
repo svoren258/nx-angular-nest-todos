@@ -1,18 +1,15 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from '@todos/data';
 
 @Component({
   selector: 'todos-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent {
   @Input() todos: Todo[] = [];
   @Output() readonly checkTodo = new EventEmitter<string>();
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onCheckTodo(id: string): void {
     this.checkTodo.emit(id);

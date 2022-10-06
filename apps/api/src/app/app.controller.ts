@@ -13,12 +13,12 @@ export class AppController {
   }
 
   @Post('addTodo')
-  addTodo(@Body() todo: TodoDTO): void {
+  addTodo(@Body() todo: TodoDTO): Todo {
     return this.appService.addTodo(todo);
   }
 
   @Put('toggleTodo')
-  toggleTodo(@Body() { id }: { id: string }): void {
+  toggleTodo(@Body() { id }: { id: string }): Todo {
     return this.appService.toggleTodo(id);
   }
 }

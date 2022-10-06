@@ -5,3 +5,7 @@ export interface Todo {
 }
 
 export type TodoDTO = Omit<Todo, 'id'>;
+
+export interface TodosState {
+  todos: Todo[];
+}
