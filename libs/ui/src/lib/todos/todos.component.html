@@ -1,0 +1,16 @@
+<ul class='todos-wrapper' nz-list [nzDataSource]="todos" nzBordered nzSize="large">
+  <li class='todo' nz-list-item *ngFor="let todo of todos" nzNoFlex>
+    <ul nz-list-item-actions>
+      <nz-list-item-action>
+        <div>
+          <button
+            class='remove-btn' nzDanger nz-button nzType="primary" [nzSize]="'small'"
+            nzShape="circle">
+            <span nz-icon nzType="delete"></span>
+          </button>
+        </div>
+      </nz-list-item-action>
+    </ul>
+    {{ todo.title }}
+  </li>
+</ul>
