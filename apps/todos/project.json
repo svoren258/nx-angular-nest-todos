@@ -16,7 +16,10 @@
         "tsConfig": "apps/todos/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/todos/src/favicon.ico", "apps/todos/src/assets"],
-        "styles": ["apps/todos/src/styles.scss"],
+        "styles": [
+          "apps/todos/src/styles.scss",
+          "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -62,7 +65,10 @@
           "browserTarget": "todos:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/todos/proxy.conf.json"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",

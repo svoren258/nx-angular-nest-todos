@@ -1,0 +1,53 @@
+.container {
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  color: white;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  color: white;
+}
+
+.title-icon {
+  margin-right: 10px;
+  font-size: 28px;
+}
+
+.content {
+  margin: 10px 0;
+}
+
+nz-header,
+nz-footer {
+  color: #fff;
+  padding: 0 20px;
+}
+
+nz-footer {
+  line-height: 1;
+  padding: 20px;
+}
+
+nz-sider {
+  color: #fff;
+  line-height: 120px;
+}
+
+nz-content {
+  color: #fff;
+}
+
+nz-layout {
+  margin-bottom: 48px;
+}
+
+nz-layout nz-layout,
+nz-layout:last-child {
+  margin: 0;
+}

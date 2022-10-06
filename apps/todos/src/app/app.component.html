@@ -1,1 +1,23 @@
-<todos-nx-welcome></todos-nx-welcome>
+<nz-layout class='container'>
+  <nz-header class='header'>
+    <span class='title-icon' nz-icon nzType="unordered-list" nzTheme="outline"></span>
+    <h1 nz-typography class='title'>Todos</h1>
+  </nz-header>
+  <nz-content class='content'>
+    <todos-todos [todos]="todos"></todos-todos>
+  </nz-content>
+  <nz-footer>
+    <form nz-form [formGroup]="todoInputForm" class="todo-input-form" (ngSubmit)="addTodo()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="todoTitle" placeholder="Type what you want to do..." />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    <button nz-button nzType="primary" (click)="addTodo()">Add Todo</button>
+    </form>
+  </nz-footer>
+</nz-layout>
+
+
