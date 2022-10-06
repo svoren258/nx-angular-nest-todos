@@ -1,18 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { Todo, TodoDTO } from '@todos/data';
+import { TodoDTO } from './dto/todo.dto';
+import { Todo } from './models/todo.model';
 
 @Injectable()
-export class AppService {
+export class TodosService {
   todos: Todo[] = [
     { id: '1', title: 'Todo 1', checked: false },
     { id: '2', title: 'Todo 2', checked: true }
   ];
 
-  getTodos(): Todo[] {
-    return this.todos;
-  }
-
-  addTodo(todo: TodoDTO): Todo {
+  async addTodo(todo: TodoDTO): Promise<Todo> {
     const { title, checked } = todo;
     const newTodo = {
       id: Math.random().toString(),
@@ -23,11 +20,15 @@ export class AppService {
     return newTodo;
   }
 
-  toggleTodo(id: string): Todo {
+  async toggleTodo(id: string): Promise<Todo> {
     this.todos = this.todos.map(todo => todo.id == id ? {
       ...todo,
       checked: !todo.checked
     } : todo);
     return this.todos.find(todo => todo.id === id);
+  }
+
+  async getTodos(): Promise<Todo[]> {
+    return this.todos;
   }
 }

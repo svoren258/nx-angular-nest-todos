@@ -8,8 +8,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('todos')
-  getData(): Todo[] {
-    return this.appService.getData();
+  getTodos(): Todo[] {
+    return this.appService.getTodos();
   }
 
   @Post('addTodo')
