@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@todos/data": ["libs/data/src/index.ts"],
+      "@todos/store": ["libs/store/src/index.ts"],
       "@todos/ui": ["libs/ui/src/index.ts"]
     }
   },

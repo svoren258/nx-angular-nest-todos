@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '@todos/data';
 
 @Component({
@@ -8,8 +8,13 @@ import { Todo } from '@todos/data';
 })
 export class TodosComponent implements OnInit {
   @Input() todos: Todo[] = [];
+  @Output() readonly checkTodo = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onCheckTodo(id: string): void {
+    this.checkTodo.emit(id);
+  }
 }

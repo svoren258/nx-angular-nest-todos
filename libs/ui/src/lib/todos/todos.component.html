@@ -2,13 +2,7 @@
   <li class='todo' nz-list-item *ngFor="let todo of todos" nzNoFlex>
     <ul nz-list-item-actions>
       <nz-list-item-action>
-        <div>
-          <button
-            class='remove-btn' nzDanger nz-button nzType="primary" [nzSize]="'small'"
-            nzShape="circle">
-            <span nz-icon nzType="delete"></span>
-          </button>
-        </div>
+        <label nz-checkbox (ngModelChange)='onCheckTodo(todo.id)' [ngModel]="todo.checked"></label>
       </nz-list-item-action>
     </ul>
     {{ todo.title }}

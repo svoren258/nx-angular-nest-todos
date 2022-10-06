@@ -1,17 +1,30 @@
 import { Injectable } from '@nestjs/common';
-import { Todo } from '@todos/data';
+import { Todo, TodoDTO } from '@todos/data';
 
 @Injectable()
 export class AppService {
-  todos: Todo[] = [{ title: 'Todo 1' }, { title: 'Todo 2' }];
+  todos: Todo[] = [
+    { id: '1', title: 'Todo 1', checked: false },
+    { id: '2', title: 'Todo 2', checked: true }
+  ];
 
   getData(): Todo[] {
     return this.todos;
   }
 
-  addTodo(): void {
+  addTodo(todo: TodoDTO): void {
+    const { title, checked } = todo;
     this.todos.push({
-      title: `New todo ${Math.floor(Math.random() * 1000)}`,
+      id: Math.random().toString(),
+      title,
+      checked
     });
+  }
+
+  toggleTodo(id: string): void {
+    this.todos = this.todos.map(todo => todo.id == id ? {
+      ...todo,
+      checked: !todo.checked
+    } : todo);
   }
 }

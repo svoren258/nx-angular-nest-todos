@@ -9,8 +9,6 @@ import { Todo } from '@todos/data';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'todos';
-
   todoInputForm = this.fb.group({
     todoTitle: ''
   });
@@ -27,8 +25,16 @@ export class AppComponent {
   }
 
   addTodo(): void {
-    this.http.post('/api/addTodo', {}).subscribe(() => {
+    const title = this.todoInputForm.controls.todoTitle.value;
+    this.http.post('/api/addTodo', { title, checked: false }).subscribe(() => {
       this.fetch();
     });
+    this.todoInputForm.reset();
+  }
+
+  toggleTodo(id: string): void {
+    this.http.put('/api/toggleTodo', { id }).subscribe(() =>
+      this.fetch()
+    );
   }
 }

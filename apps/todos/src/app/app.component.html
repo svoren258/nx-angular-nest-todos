@@ -4,7 +4,7 @@
     <h1 nz-typography class='title'>Todos</h1>
   </nz-header>
   <nz-content class='content'>
-    <todos-todos [todos]="todos"></todos-todos>
+    <todos-todos (checkTodo)='toggleTodo($event)' [todos]="todos"></todos-todos>
   </nz-content>
   <nz-footer>
     <form nz-form [formGroup]="todoInputForm" class="todo-input-form" (ngSubmit)="addTodo()">
@@ -15,7 +15,7 @@
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-    <button nz-button nzType="primary" (click)="addTodo()">Add Todo</button>
+    <button nz-button nzType="primary">Add Todo</button>
     </form>
   </nz-footer>
 </nz-layout>
