@@ -16,7 +16,10 @@ export class TodosService {
       title,
       checked
     }
-    this.todos.push(newTodo);
+    this.todos = [
+      ...this.todos,
+      newTodo
+    ];
     return newTodo;
   }
 

@@ -1,0 +1,24 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""todo """
+type Todo {
+  id: ID!
+  title: String!
+  checked: Boolean!
+}
+
+type Query {
+  getTodos: [Todo!]!
+}
+
+type Mutation {
+  addTodo(todo: TodoDTO!): Todo!
+  toggleTodo(id: String!): Todo!
+}
+
+input TodoDTO {
+  title: String!
+  checked: Boolean!
+}

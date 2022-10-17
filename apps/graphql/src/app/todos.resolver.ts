@@ -16,7 +16,7 @@ export class TodosResolver {
   async addTodo(
     @Args('todo') todo: TodoDTO,
   ): Promise<Todo> {
-    return await this.todosService.addTodo(todo);
+    return this.todosService.addTodo(todo);
   }
 
   @Mutation(returns => Todo)
